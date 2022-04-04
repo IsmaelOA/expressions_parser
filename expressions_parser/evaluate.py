@@ -73,21 +73,21 @@ class Evaluate:
                 
     def __calc_reversed_polish(self, expression):
      
-        pila = []
+        stack = []
      
-        for valor in expression.split(' '):
-            if valor in ['-', '+', '*', '/']:
-                op1 = pila.pop()
-                op2 = pila.pop()
-                if valor=='-': resultado = op2 - op1
-                if valor=='+': resultado = op2 + op1
-                if valor=='*': resultado = op2 * op1
-                if valor=='/': resultado = op2 / op1
-                pila.append(resultado)
+        for value in expression.split(' '):
+            if value in ['-', '+', '*', '/']:
+                op1 = stack.pop()
+                op2 = stack.pop()
+                if value=='-': result = op2 - op1
+                if value=='+': result = op2 + op1
+                if value=='*': result = op2 * op1
+                if value=='/': result = op2 / op1
+                stack.append(result)
             else:
-                pila.append(float(valor))
+                stack.append(float(value))
 
-        return pila.pop()
+        return stack.pop()
     
     def infix_to_posfix(self):
         try:
